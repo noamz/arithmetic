@@ -28,10 +28,14 @@ instance Num Game where
   signum g = error "sign undefined for general games"
   abs g = error "absolute value undefined for general games"
 
-g :: Game -> Game
-g x = x
+n :: Integer -> Game
+n x = fromInteger x
 
-test1 = eq (g 2 + g 2) (g 4)                 -- True
-test2 = eq (g 2 * g 3) (g 3 * g 2)           -- True after a second or two
-test3 = eq (g 8 - g 4) (- (g 4 - g 8))       -- True
-test4 = eq (g 3 * g 3) (g 9)                 -- False after a couple minutes
+star = Game { left = [n 0] , right = [n 0] }
+
+test1 = eq (n 2 + n 2) (n 4)                 -- True
+test2 = eq (n 2 * n 3) (n 3 * n 2)           -- True after a second or two
+test3 = eq (n 8 - n 4) (- (n 4 - n 8))       -- True
+test4 = eq (n 3 * n 3) (n 9)                 -- False after a couple minutes
+test5 = eq (star * n 3) (star + star + star) -- True
+
