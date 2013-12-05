@@ -37,7 +37,8 @@ test1 = eq (n 2 + n 2) (n 4)                 -- True
 test2 = eq (n 2 * n 3) (n 3 * n 2)           -- True after a second or two
 test3 = eq (n 8 - n 4) (- (n 4 - n 8))       -- True
 test4 = eq (n 3 * n 3) (n 9)                 -- ?? I lose patience after about 15 minutes
-test5 = eq (star * n 3) (star + star + star) -- True
-test6 = eq ((star + star) * n 2 + star) (star + n 2 * (star + star))  -- True after a second or two
-test7 = eq ((star + star) * n 3) (n 3 * (star + star))                -- ?? lose patience
+test5 = eq (star * n 3) star                 -- True
+test6 = eq ((star + star) * n 2 + star) star -- True after a second or two
+test7 = eq ((star + star) * n 3) (n 0)       -- True
+test8 = eq (n 3 * (star + star)) (n 0)       -- True after several seconds
 
